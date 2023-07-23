@@ -6,7 +6,6 @@ module.exports = {
     colors: {
       white: "#fff",
       "off-white": "#F9FAF5",
-
       "blue-ultralight": "#D5E4FA",
       "purple-ultralight": "#E5D6FB",
       "pink-ultralight": "#FBD4F5",
@@ -17,6 +16,7 @@ module.exports = {
       "purple-light": "#af81f3",
       "pink-light": "#f37fe1",
       "yellow-light": "#fffa6c",
+      "green-light": "#e4fb98",
 
       "blue-regular": "#307ae6",
       "purple-regular": "#7a2dea",

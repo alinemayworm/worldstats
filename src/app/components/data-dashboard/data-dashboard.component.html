@@ -4,18 +4,26 @@
     <header class="w-full h-24 flex items-center justify-end py-6 pr-12">
       <span
         class="h-full text-3xl text-purple-regular font-black"
-        [ngClass]="{ 'mdi mdi-web': statsService.regionSelected === 'All' }"
+        [ngClass]="{
+          'mdi mdi-web': statsService.menuOptionSelected === 'All'
+        }"
       >
         {{
-          statsService.regionSelected === "All"
+          statsService.menuOptionSelected === "All"
             ? ""
-            : statsService.regionSelected
+            : statsService.menuOptionSelected
         }}</span
       >
     </header>
 
-    <div class="flex flex-col w-full h-full">
-      <app-multiple-countries class="h-full w-full"></app-multiple-countries>
+    <div class="flex flex-col w-full h-full overflow-y-auto">
+      <app-multiple-countries
+        *ngIf="statsService.menuOptionSelected !== 'Search'; else countryList"
+        class="h-full w-full"
+      ></app-multiple-countries>
     </div>
+    <ng-template #countryList>
+      <app-country-list></app-country-list>
+    </ng-template>
   </div>
 </div>

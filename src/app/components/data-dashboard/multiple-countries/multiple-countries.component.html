@@ -4,7 +4,7 @@
     *ngIf="statsService.loading === false; else loadingPage"
   >
     <div
-      *ngIf="statsService.regionSelected == 'All'"
+      *ngIf="statsService.menuOptionSelected == 'All'"
       class="w-full flex flex-col justify-between items-center p-8 rounded shadow-sm hover:shadow-md bg-white"
     >
       <p class="w-full text-blue-regular font-extrabold text-2xl">
@@ -32,7 +32,7 @@
 
     <div
       class="w-full flex flex-col justify-between items-center p-8 rounded shadow-sm hover:shadow-md bg-white"
-      *ngIf="statsService.regionSelected == 'All'"
+      *ngIf="statsService.menuOptionSelected == 'All'"
     >
       <p class="text-green-dark w-full font-extrabold text-2xl">
         Independency status
@@ -57,7 +57,7 @@
       </div>
     </div>
     <div
-      *ngIf="statsService.regionSelected != 'All'"
+      *ngIf="statsService.menuOptionSelected != 'All'"
       class="w-full flex flex-col justify-between items-center p-8 rounded shadow-sm hover:shadow-md bg-white"
     >
       <p class="w-full text-blue-regular font-extrabold text-2xl">
@@ -70,7 +70,7 @@
       </div>
     </div>
     <div
-      *ngIf="statsService.regionSelected != 'All'"
+      *ngIf="statsService.menuOptionSelected != 'All'"
       class="w-full flex flex-col justify-between items-center p-8 rounded shadow-sm hover:shadow-md bg-white"
     >
       <p class="w-full text-green-dark font-extrabold text-2xl">

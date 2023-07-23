@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { StatsService } from "src/app/core/services/stats.service";
 
 @Component({
@@ -6,10 +6,6 @@ import { StatsService } from "src/app/core/services/stats.service";
   templateUrl: "./multiple-countries.component.html",
   styleUrls: ["./multiple-countries.component.css"],
 })
-export class MultipleCountriesComponent implements OnInit {
+export class MultipleCountriesComponent {
   constructor(public statsService: StatsService) {}
-
-  ngOnInit() {
-    this.statsService.getAllCountriesInformation();
-  }
 }

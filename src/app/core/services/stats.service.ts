@@ -7,7 +7,7 @@ export class StatsService {
   constructor(private http: HttpClient) {}
 
   private baseUrl = "https://restcountries.com/v3.1";
-  public regionSelected: string = REGION_OPTIONS[0];
+  public menuOptionSelected: string = REGION_OPTIONS[0];
   public allCountriesInfo: any = [];
   public languagesStatistics: any = [];
   public continentStatistics: any = [];
@@ -15,16 +15,17 @@ export class StatsService {
   public populationStatistics: any = [];
   public bordersStatistics: any = [];
   public sizeStatistics: any = [];
-
+  public countryList: any = [];
+  public searchCountryParam: string = "";
   public loading = false;
 
   public getAllCountriesInformation(): void {
     this.loading = true;
 
     this.http.get(`${this.baseUrl}/all`).subscribe((results: any) => {
-      if (this.regionSelected !== "All") {
+      if (this.menuOptionSelected !== "All") {
         this.allCountriesInfo = results.filter((country: any) =>
-          country.continents.includes(this.regionSelected)
+          country.continents.includes(this.menuOptionSelected)
         );
         this.getBordersStatistics();
         this.getLargestCountries();
@@ -137,5 +138,34 @@ export class StatsService {
     this.sizeStatistics = largetsCountries
       .sort((a: any, b: any) => b.area - a.area)
       .slice(0, 8);
+  }
+
+  public getCountryList() {
+    this.http.get(`${this.baseUrl}/all`).subscribe((results: any) => {
+      this.countryList = results
+        .map((country: any) => {
+          return {
+            name: country.name.official,
+            continent: country.continents,
+            code: country.cca2,
+          };
+        })
+        .filter((country: any) =>
+          country.name.includes(this.searchCountryParam)
+        )
+        .sort((a: any, b: any) => {
+          if (a.name < b.name) {
+            return -1;
+          }
+          if (a.name > b.name) {
+            return 1;
+          }
+          return 0;
+        });
+    });
+  }
+
+  public getCountryDetails(code: string) {
+    return this.http.get(`${this.baseUrl}/alpha/${code}`);
   }
 }

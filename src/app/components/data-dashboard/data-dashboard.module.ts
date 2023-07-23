@@ -12,6 +12,10 @@ import { LoadingComponent } from "../loading/loading.component";
 import { BordersChartComponent } from "./charts/borders-chart/borders-chart.component";
 import { LargestChartComponent } from "./charts/largest-chart/largest-chart.component";
 import { MultipleCountriesComponent } from "./multiple-countries/multiple-countries.component";
+import { CountryListComponent } from "./country-list/country-list.component";
+import { CountryDetailsComponent } from "./country-details/country-details.component";
+import { WorldMapComponent } from "./country-details/world-map/world-map.component";
+import { SummaryComponent } from './country-details/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,10 @@ import { MultipleCountriesComponent } from "./multiple-countries/multiple-countr
     BordersChartComponent,
     LargestChartComponent,
     MultipleCountriesComponent,
+    CountryListComponent,
+    CountryDetailsComponent,
+    WorldMapComponent,
+    SummaryComponent,
   ],
 
   imports: [CommonModule, SharedModule, DataDashboardRoutingModule],
