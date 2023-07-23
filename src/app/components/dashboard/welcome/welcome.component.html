@@ -1,0 +1,26 @@
+<div class="absolute flex flex-col h-screen w-screen bg-green-ultralight">
+  <header class="h-32 w-full bg-transparent"></header>
+
+  <main
+    class="h-full w-full bg-contain bg-no-repeat bg-center flex justify-center items-center"
+    id="app-background"
+  >
+    <div
+      class="w-full h-48 p-6 bg-off-white transition ease-in-out duration-200 hover:opacity-80 opacity-70 mb-4 tracking-widest text-blue-regular"
+    >
+      <div
+        class="h-full w-full flex flex-col font-thin justify-between items-center relative"
+      >
+        <span class="text-7xl font-thin"> WorldStats</span>
+        <button
+          @fadeInLong
+          class="absolute bottom-0 text-2xl transition ease-in-out duration-150 p-2 hover:bg-blue-dark hover:text-white rounded tracking-wider"
+          (click)="navigateToHome()"
+        >
+          Start
+        </button>
+      </div>
+    </div>
+  </main>
+  <footer class="h-20 w-full bg-transparent"></footer>
+</div>
