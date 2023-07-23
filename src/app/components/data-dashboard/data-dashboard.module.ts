@@ -11,6 +11,7 @@ import { PopulationChartComponent } from "./charts/population-chart/population-c
 import { LoadingComponent } from "../loading/loading.component";
 import { BordersChartComponent } from "./charts/borders-chart/borders-chart.component";
 import { LargestChartComponent } from "./charts/largest-chart/largest-chart.component";
+import { MultipleCountriesComponent } from "./multiple-countries/multiple-countries.component";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LargestChartComponent } from "./charts/largest-chart/largest-chart.comp
     LoadingComponent,
     BordersChartComponent,
     LargestChartComponent,
+    MultipleCountriesComponent,
   ],
 
   imports: [CommonModule, SharedModule, DataDashboardRoutingModule],
