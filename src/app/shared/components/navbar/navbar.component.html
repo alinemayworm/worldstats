@@ -1,49 +1,78 @@
 <div
-  class="h-full p-4 text-purple-ultralight group w-24 hover:w-72 overflow-hidden bg-blue-ultradark transition-all duration-150"
+  class="h-full p-4 text-purple-ultralight group overflow-hidden bg-blue-ultradark transition-all duration-150"
+  [ngClass]="{ 'w-24': !expanded }"
 >
-  <div class="w-full h-24 flex justify-around">
-    <span class="mdi mdi-chevron-right group-hover:hidden text-2xl"></span>
+  <div class="h-24 w-full flex flex-row justify-between items-center">
     <span
-      class="hidden text-3xl text-blue-ultralight group-hover:block font-thin tracking-wider"
+      *ngIf="expanded"
+      class="cursor-pointer text-3xl text-blue-ultralight font-thin tracking-wider"
       >WorldStats</span
     >
+    <span
+      (click)="toggleExpanded()"
+      class="mdi mdi-chevron-right ml-4 text-2xl text-center"
+      [ngClass]="{ 'rotate-180': expanded }"
+    ></span>
   </div>
   <div class="h-12">
-    <span class="hidden group-hover:block pl-4 text-blue-light text-lg"
+    <span class="pl-4 text-blue-light text-lg" [ngClass]="{ hidden: !expanded }"
       >All</span
     >
   </div>
-  <div
-    class="hover:bg-blue-light m-4 rounded justify-start align-center text-2xl"
+  <button
+    class="hover:bg-blue-dark m-4 rounded justify-start align-center text-2xl"
     [ngClass]="{
-      'text-purple-light': statsService.regionSelected === 'All'
+      'text-green-regular': statsService.menuOptionSelected === 'All'
     }"
+    (click)="setOption(allCountries)"
   >
-    <button class="flex flex-row" (click)="setOption(allCountries)">
+    <div class="flex flex-row">
       <span class="h-full mdi mdi-web"></span>
-      <button class="pl-2 hidden group-hover:block text-xl">
+      <button class="pl-2 text-xl" [ngClass]="{ hidden: !expanded }">
         {{ allCountries }}
       </button>
-    </button>
-  </div>
+    </div>
+  </button>
   <div class="h-12 mt-6">
-    <span class="hidden group-hover:block pl-4 text-blue-light text-lg"
+    <span class="pl-4 text-blue-light text-lg" [ngClass]="{ hidden: !expanded }"
       >Regions</span
     >
   </div>
-  <div
-    class="hover:bg-blue-light m-4 rounded text-2xl"
-    [ngClass]="{
-      'text-purple-light': statsService.regionSelected === item
-    }"
-    *ngFor="let item of menuItems"
-    (click)="setOption(item)"
-  >
-    <button class="flex flex-row">
-      <span class="h-full mdi mdi-map-marker"></span>
-      <span class="pl-2 hidden group-hover:block text-xl">
-        {{ item }}
-      </span>
+  <div class="flex flex-col">
+    <button
+      class="hover:bg-blue-dark m-4 rounded text-2xl"
+      [ngClass]="{
+        'text-green-regular': statsService.menuOptionSelected === item
+      }"
+      *ngFor="let item of menuItems"
+      (click)="setOption(item)"
+    >
+      <button class="flex flex-row">
+        <span class="h-full mdi mdi-map-marker"></span>
+        <span class="pl-2 text-xl" [ngClass]="{ hidden: !expanded }">
+          {{ item }}
+        </span>
+      </button>
     </button>
   </div>
+
+  <div class="h-12 mt-6">
+    <span class="pl-4 text-blue-light text-lg" [ngClass]="{ hidden: !expanded }"
+      >Countries</span
+    >
+  </div>
+  <button
+    class="hover:bg-blue-dark m-4 rounded text-2xl"
+    [ngClass]="{
+      'text-green-regular': statsService.menuOptionSelected === searchCountry
+    }"
+    (click)="setOption(searchCountry)"
+  >
+    <button class="flex flex-row">
+      <span class="h-full mdi mdi-magnify"></span>
+      <span class="pl-2 text-xl" [ngClass]="{ hidden: !expanded }">
+        Search
+      </span>
+    </button>
+  </button>
 </div>

@@ -1,0 +1,43 @@
+<div class="w-full h-full p-12 bg-off-white">
+  <div *ngIf="countryDetails; else loadingPage">
+    <div class="h-12 flex justify-between items-center">
+      <button
+        class="h-full px-4 rounded bg-blue-regular text-white mdi mdi-chevron-left"
+        (click)="navigateToList()"
+      >
+        Back
+      </button>
+      <p class="text-3xl text-blue-dark">
+        {{ countryDetails.name.official }}
+      </p>
+    </div>
+    <div class="grid grid-cols-2 gap-12 pt-12">
+      <div
+        class="p-4 rounded-lg shadow-sm hover:shadow-md bg-white flex-col flex"
+      >
+        <p class="w-full p-4 text-blue-regular font-extrabold text-2xl">
+          Location
+        </p>
+        <app-world-map
+          class="p-6"
+          [lat]="countryDetails.latlng[0]"
+          [long]="countryDetails.latlng[1]"
+        ></app-world-map>
+      </div>
+      <div
+        class="p-4 rounded-lg shadow-sm hover:shadow-md bg-white flex-col flex"
+      >
+        <p class="w-full p-4 text-blue-regular font-extrabold text-2xl">
+          Summary
+        </p>
+        <app-summary
+          class="p-6"
+          [countryDetails]="countryDetails"
+        ></app-summary>
+      </div>
+    </div>
+  </div>
+  <ng-template #loadingPage>
+    <app-loading></app-loading>
+  </ng-template>
+</div>

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { StatsService } from "src/app/core/services/stats.service";
 import { REGION_OPTIONS } from "../../app.constants";
 
@@ -7,15 +7,34 @@ import { REGION_OPTIONS } from "../../app.constants";
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.css"],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   constructor(public statsService: StatsService) {}
 
-  allCountries = "All";
+  public expanded = true;
+  public allCountries = "All";
 
-  menuItems = REGION_OPTIONS.slice(1);
+  public menuItems = REGION_OPTIONS.slice(1);
 
-  setOption(region: string) {
-    this.statsService.regionSelected = region;
-    this.statsService.getAllCountriesInformation();
+  public searchCountry = "Search";
+
+  ngOnInit() {
+    this.getInformation();
+  }
+
+  toggleExpanded() {
+    this.expanded = !this.expanded;
+  }
+
+  public setOption(option: string) {
+    this.statsService.menuOptionSelected = option;
+    this.getInformation();
+  }
+
+  private getInformation() {
+    if (this.statsService.menuOptionSelected !== "Search") {
+      this.statsService.getAllCountriesInformation();
+    } else {
+      this.statsService.getCountryList();
+    }
   }
 }
