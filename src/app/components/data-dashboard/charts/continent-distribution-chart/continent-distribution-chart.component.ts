@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Chart, registerables } from "chart.js";
 import { StatsService } from "src/app/core/services/stats.service";
+import { IContinentStatistics } from "src/app/shared/interfaces/statistics";
 
 Chart.register(...registerables);
 
@@ -19,14 +20,16 @@ export class ContinentDistributionChartComponent implements OnInit {
       type: "bar",
       data: {
         labels: this.statsService.continentStatistics.map(
-          (continentStatistic: any) => continentStatistic.continent
+          (continentStatistic: IContinentStatistics) =>
+            continentStatistic.continent
         ),
 
         datasets: [
           {
             label: "Countries",
             data: this.statsService.continentStatistics.map(
-              (continentStatistic: any) => continentStatistic.countries
+              (continentStatistic: IContinentStatistics) =>
+                continentStatistic.countries
             ),
 
             backgroundColor: [

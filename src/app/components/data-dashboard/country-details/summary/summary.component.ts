@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { ICountry } from "src/app/shared/interfaces/country";
 
 @Component({
   selector: "app-summary",
@@ -7,22 +8,22 @@ import { Component, Input } from "@angular/core";
 })
 export class SummaryComponent {
   @Input()
-  countryDetails: any;
+  public countryDetails: ICountry;
 
   constructor() {
-    this.countryDetails = {};
+    this.countryDetails = {} as ICountry;
   }
 
-  getDensity() {
+  public getDensity(): number {
     return Math.round(
       this.countryDetails.population / this.countryDetails.area
     );
   }
 
-  getCurrency() {
+  public getCurrency(): string {
     if (this.countryDetails.currencies) {
       const code = Object.keys(this.countryDetails.currencies)[0];
-      return code + " - " + this.countryDetails.currencies[code].name;
+      return code + " - " + (this.countryDetails.currencies as any)[code].name;
     }
     return "N/A";
   }

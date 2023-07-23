@@ -1,41 +1,53 @@
-<div class="w-full text-xl">
-  <div class="py-4 flex flex-row">
-    <span class="text-purple-light mdi mdi-web pr-2"> </span>
+<div class="w-full text-lg">
+  <div class="grid grid-cols-2">
+    <div class="py-1">
+      <p>
+        <span class="text-purple-light mdi mdi-web pr-2"> </span>
+        <span class="pr-2 text-grey-ultradark">Continent: </span>
+      </p>
+      <p class="text-grey-regular">{{ countryDetails.continents[0] }}</p>
+    </div>
+    <div class="py-1">
+      <p>
+        <span class="text-blue-light mdi mdi-city pr-2"> </span>
 
-    <span class="pr-2 text-grey-ultradark">Continent: </span>
-    <span class="text-grey-regular">{{ countryDetails.continents[0] }}</span>
-  </div>
-  <div class="py-4 flex flex-row">
-    <span class="text-blue-light mdi mdi-city pr-2"> </span>
+        <span class="pr-2 text-grey-ultradark">Capital: </span>
+      </p>
+      <p class="text-grey-regular">{{ countryDetails.capital[0] }}</p>
+    </div>
+    <div class="py-1">
+      <p>
+        <span class="text-yellow-light mdi mdi-image-area pr-2"> </span>
+        <span class="pr-2 text-grey-ultradark">Area: </span>
+      </p>
+      <p class="text-grey-regular">{{ countryDetails.area }} km²</p>
+    </div>
+    <div class="py-1">
+      <p>
+        <span class="text-green-light mdi mdi-account-group pr-2"> </span>
 
-    <span class="pr-2 text-grey-ultradark">Capital: </span>
-    <span class="text-grey-regular">{{ countryDetails.capital[0] }}</span>
-  </div>
-  <div class="py-4 flex flex-row">
-    <span class="text-yellow-light mdi mdi-image-area pr-2"> </span>
-    <span class="pr-2 text-grey-ultradark">Area: </span>
-    <span class="text-grey-regular">{{ countryDetails.area }} km²</span>
-  </div>
-  <div class="py-4 flex flex-row">
-    <span class="text-green-light mdi mdi-account-group pr-2"> </span>
+        <span class="pr-2 text-grey-ultradark">Population: </span>
+      </p>
+      <p class="text-grey-regular">{{ countryDetails.population }} habitants</p>
+    </div>
 
-    <span class="pr-2 text-grey-ultradark">Population: </span>
-    <span class="text-grey-regular"
-      >{{ countryDetails.population }} habitants</span
-    >
-  </div>
+    <div class="py-1">
+      <p>
+        <span class="text-pink-light mdi mdi-account-group-outline pr-2">
+        </span>
 
-  <div class="py-4 flex flex-row">
-    <span class="text-pink-light mdi mdi-account-group-outline pr-2"> </span>
+        <span class="pr-2 text-grey-ultradark">Density: </span>
+      </p>
+      <p class="text-grey-regular">{{ getDensity() }} per km²</p>
+    </div>
 
-    <span class="pr-2 text-grey-ultradark">Density: </span>
-    <span class="text-grey-regular">{{ getDensity() }} per km² </span>
-  </div>
+    <div class="py-1">
+      <p>
+        <span class="text-green-regular mdi mdi-currency-sign pr-2"> </span>
 
-  <div class="py-4 flex flex-row">
-    <span class="text-green-regular mdi mdi-currency-sign pr-2"> </span>
-
-    <span class="pr-2 text-grey-ultradark">Currency: </span>
-    <span class="text-grey-regular">{{ getCurrency() }} </span>
+        <span class="pr-2 text-grey-ultradark">Currency: </span>
+      </p>
+      <p class="text-grey-regular">{{ getCurrency() }}</p>
+    </div>
   </div>
 </div>

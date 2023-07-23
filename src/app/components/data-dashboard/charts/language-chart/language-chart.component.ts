@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Chart, registerables } from "chart.js";
 import { StatsService } from "src/app/core/services/stats.service";
+import { ILanguageStatistics } from "src/app/shared/interfaces/statistics";
 
 Chart.register(...registerables);
 
@@ -10,11 +11,7 @@ Chart.register(...registerables);
   styleUrls: ["./language-chart.component.css"],
 })
 export class LanguageChartComponent implements OnInit {
-  private langChart!: Chart;
-
-  constructor(private statsService: StatsService) {
-    this.langChart = {} as Chart;
-  }
+  constructor(private statsService: StatsService) {}
 
   ngOnInit(): void {
     const ctx = document.getElementById("langChart");
@@ -23,13 +20,13 @@ export class LanguageChartComponent implements OnInit {
       type: "pie",
       data: {
         labels: this.statsService.languagesStatistics.map(
-          (lang: any) => lang.language + "-" + lang.quantity
+          (lang: ILanguageStatistics) => lang.language + "-" + lang.quantity
         ),
         datasets: [
           {
             label: "Languages",
             data: this.statsService.languagesStatistics.map(
-              (lang: any) => lang.quantity
+              (lang: ILanguageStatistics) => lang.quantity
             ),
 
             backgroundColor: [

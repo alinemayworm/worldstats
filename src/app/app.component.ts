@@ -9,11 +9,5 @@ import { fadeInOut } from "./shared/animations/animations";
   animations: [fadeInOut],
 })
 export class AppComponent {
-  constructor(private contexts: ChildrenOutletContexts) {}
-
-  getRouteAnimationData() {
-    return this.contexts.getContext("primary")?.route?.snapshot?.data?.[
-      "animation"
-    ];
-  }
+  constructor() {}
 }

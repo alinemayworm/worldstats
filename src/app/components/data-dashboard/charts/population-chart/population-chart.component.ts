@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Chart, registerables } from "chart.js";
 import { StatsService } from "src/app/core/services/stats.service";
+import { IPopulationStatistics } from "src/app/shared/interfaces/statistics";
 
 Chart.register(...registerables);
 @Component({
@@ -18,14 +19,16 @@ export class PopulationChartComponent implements OnInit {
       type: "bar",
       data: {
         labels: this.statsService.populationStatistics.map(
-          (populationStatistic: any) => populationStatistic.country
+          (populationStatistic: IPopulationStatistics) =>
+            populationStatistic.country
         ),
 
         datasets: [
           {
             label: "Population",
             data: this.statsService.populationStatistics.map(
-              (populationStatistic: any) => populationStatistic.population
+              (populationStatistic: IPopulationStatistics) =>
+                populationStatistic.population
             ),
 
             backgroundColor: [

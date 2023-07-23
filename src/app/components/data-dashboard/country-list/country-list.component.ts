@@ -11,16 +11,16 @@ import { StatsService } from "src/app/core/services/stats.service";
 export class CountryListComponent implements OnInit {
   constructor(public statsService: StatsService, private router: Router) {}
 
-  updateSearchParam(param: string) {
+  ngOnInit(): void {
+    this.updateSearchParam("");
+  }
+
+  public updateSearchParam(param: string): void {
     this.statsService.searchCountryParam = param;
     this.statsService.getCountryList();
   }
 
-  goToCountryDetailsPage(code: string) {
+  public goToCountryDetailsPage(code: string): void {
     this.router.navigate(["home/data-dashboard/country-details", code]);
-  }
-
-  ngOnInit() {
-    this.updateSearchParam("");
   }
 }
