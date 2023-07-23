@@ -12,25 +12,23 @@ export class NavbarComponent implements OnInit {
 
   public expanded = true;
   public allCountries = "All";
-
   public menuItems = REGION_OPTIONS.slice(1);
-
   public searchCountry = "Search";
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getInformation();
   }
 
-  toggleExpanded() {
+  public toggleExpanded(): void {
     this.expanded = !this.expanded;
   }
 
-  public setOption(option: string) {
+  public setOption(option: string): void {
     this.statsService.menuOptionSelected = option;
     this.getInformation();
   }
 
-  private getInformation() {
+  private getInformation(): void {
     if (this.statsService.menuOptionSelected !== "Search") {
       this.statsService.getAllCountriesInformation();
     } else {

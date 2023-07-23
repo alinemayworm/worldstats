@@ -14,10 +14,10 @@ import {} from "googlemaps";
 })
 export class WorldMapComponent implements AfterViewInit {
   @Input()
-  lat: number;
+  public lat: number;
 
   @Input()
-  long: number;
+  public long: number;
 
   constructor() {
     // Initialize properties here if needed.

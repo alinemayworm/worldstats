@@ -9,16 +9,9 @@ import { Router } from "@angular/router";
   animations: [fadeIn(), fadeInLong()],
 })
 export class WelcomeComponent {
-  title: string = "worldstats-app";
-  animateText = false;
-
   constructor(private router: Router) {}
 
-  startTextAnimation(): void {
-    this.animateText = true;
-  }
-
-  navigateToHome(): void {
+  public navigateToHome(): void {
     this.router.navigate(["/home/data-dashboard"]);
   }
 }

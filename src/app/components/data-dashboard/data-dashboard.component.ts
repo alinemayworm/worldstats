@@ -10,5 +10,5 @@ import { fadeIn } from "src/app/shared/animations/animations";
   animations: [fadeIn()],
 })
 export class DataDashboardComponent {
-  constructor(private http: HttpService, public statsService: StatsService) {}
+  constructor(public statsService: StatsService) {}
 }

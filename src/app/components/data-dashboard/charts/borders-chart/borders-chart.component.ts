@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Chart, registerables } from "chart.js";
 import { StatsService } from "src/app/core/services/stats.service";
+import { IBordersStatistics } from "src/app/shared/interfaces/statistics";
 @Component({
   selector: "app-borders-chart",
   templateUrl: "./borders-chart.component.html",
@@ -16,14 +17,14 @@ export class BordersChartComponent implements OnInit {
       type: "bar",
       data: {
         labels: this.statsService.bordersStatistics.map(
-          (bordersStatistic: any) => bordersStatistic.country
+          (bordersStatistic: IBordersStatistics) => bordersStatistic.country
         ),
 
         datasets: [
           {
             label: "Borders",
             data: this.statsService.bordersStatistics.map(
-              (bordersStatistic: any) => bordersStatistic.borders
+              (bordersStatistic: IBordersStatistics) => bordersStatistic.borders
             ),
 
             backgroundColor: [

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Chart, registerables } from "chart.js";
 import { StatsService } from "src/app/core/services/stats.service";
+import { ISizeStatistics } from "src/app/shared/interfaces/statistics";
 
 Chart.register(...registerables);
 @Component({
@@ -18,13 +19,13 @@ export class LargestChartComponent implements OnInit {
       type: "pie",
       data: {
         labels: this.statsService.sizeStatistics.map(
-          (sizeStatistic: any) => sizeStatistic.country
+          (sizeStatistic: ISizeStatistics) => sizeStatistic.country
         ),
         datasets: [
           {
             label: "Largests Countries",
             data: this.statsService.sizeStatistics.map(
-              (sizeStatistic: any) => sizeStatistic.area
+              (sizeStatistic: ISizeStatistics) => sizeStatistic.area
             ),
 
             backgroundColor: [

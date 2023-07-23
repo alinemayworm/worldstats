@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Chart, registerables } from "chart.js";
 import { StatsService } from "src/app/core/services/stats.service";
+import { IDependencyStatistics } from "src/app/shared/interfaces/statistics";
 
 Chart.register(...registerables);
 @Component({
@@ -9,11 +10,7 @@ Chart.register(...registerables);
   styleUrls: ["./independency-status-chart.component.css"],
 })
 export class IndependencyStatusChartComponent implements OnInit {
-  private independencyStatusChart!: Chart;
-
-  constructor(private statsService: StatsService) {
-    this.independencyStatusChart = {} as Chart;
-  }
+  constructor(private statsService: StatsService) {}
 
   ngOnInit(): void {
     const ctx = document.getElementById("independencyStatusChart");
@@ -22,13 +19,14 @@ export class IndependencyStatusChartComponent implements OnInit {
       type: "pie",
       data: {
         labels: this.statsService.dependencyStatistics.map(
-          (dependency: any) => dependency.status
+          (dependency: IDependencyStatistics) => dependency.status
         ),
         datasets: [
           {
             label: "Independency Status",
             data: this.statsService.dependencyStatistics.map(
-              (lang: any) => lang.quantity
+              (dependencyStatistics: IDependencyStatistics) =>
+                dependencyStatistics.quantity
             ),
 
             backgroundColor: ["#D5E4FA", "#E5D6FB"],

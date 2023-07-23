@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
+import { Observer } from "rxjs";
 import { StatsService } from "src/app/core/services/stats.service";
+import { ICountry } from "src/app/shared/interfaces/country";
 
 @Component({
   selector: "app-country-details",
@@ -14,19 +16,19 @@ export class CountryDetailsComponent implements OnInit {
     private statsService: StatsService
   ) {}
 
-  public countryDetails: any = null;
+  public countryDetails!: ICountry;
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: any) => {
+    this.route.params.subscribe((params: Partial<Observer<Params>>) => {
       this.statsService
-        .getCountryDetails(params.code)
-        .subscribe((results: any) => {
-          this.countryDetails = results[0];
+        .getCountryDetails((params as { code: string }).code)
+        .subscribe((results: Partial<Observer<ICountry[]>>) => {
+          this.countryDetails = (results as ICountry[])[0];
         });
     });
   }
 
-  public navigateToList() {
+  public navigateToList(): void {
     this.router.navigate(["/home/data-dashboard"]);
     this.statsService.menuOptionSelected = "Search";
   }
