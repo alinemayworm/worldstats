@@ -20,14 +20,14 @@ export interface ICountry {
   borders: string[];
   area: number;
   demonyms: Object;
-  maps: Object;
+  maps: ICountryMap;
   gini: Object;
   fifa: string;
   car: ICountryCar;
   timezones: string[];
   continents: string[];
-  flags: Object;
-  coatOfArms: Object;
+  flags: IFlags;
+  coatOfArms: ICoatOfArms;
   startOfWeek: string;
   capitalInfo: ICapitalInfo;
   postalCode: IPostalCode;
@@ -49,9 +49,19 @@ declare interface ICountryIdd {
   suffixes: string[];
 }
 
+declare interface ICountryMap {
+  googleMaps: string;
+  openStreetMaps: string;
+}
+
 declare interface ICountryCar {
   signs: string[];
   side: "left" | "right";
+}
+
+declare interface ICoatOfArms {
+  png: string;
+  svg: string;
 }
 
 declare interface ICapitalInfo {
@@ -61,4 +71,10 @@ declare interface ICapitalInfo {
 declare interface IPostalCode {
   format: string;
   regex: RegExp;
+}
+
+declare interface IFlags {
+  png: string;
+  svg: string;
+  alt: string;
 }

@@ -32,8 +32,8 @@ export class WorldMapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const mapProperties = {
-      center: new google.maps.LatLng(0, 0),
-      zoom: 1,
+      center: new google.maps.LatLng(this.lat, this.long),
+      zoom: 2,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
     };
     this.map = new google.maps.Map(

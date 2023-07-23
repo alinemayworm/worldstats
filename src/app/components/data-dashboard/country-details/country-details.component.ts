@@ -1,4 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+import {
+  DomSanitizer,
+  SafeResourceUrl,
+  SafeUrl,
+} from "@angular/platform-browser";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { Observer } from "rxjs";
 import { StatsService } from "src/app/core/services/stats.service";
@@ -13,7 +18,8 @@ export class CountryDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private statsService: StatsService
+    private statsService: StatsService,
+    private sanitizer: DomSanitizer
   ) {}
 
   public countryDetails!: ICountry;
@@ -31,5 +37,23 @@ export class CountryDetailsComponent implements OnInit {
   public navigateToList(): void {
     this.router.navigate(["/home/data-dashboard"]);
     this.statsService.menuOptionSelected = "Search";
+  }
+
+  public flagImg(): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(
+      this.countryDetails.flags.png
+    );
+  }
+
+  public flagAlt(): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(
+      this.countryDetails.flags.alt
+    );
+  }
+
+  public coatOfArmsImg(): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(
+      this.countryDetails.coatOfArms.png
+    );
   }
 }
