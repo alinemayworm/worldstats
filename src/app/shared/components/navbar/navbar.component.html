@@ -1,0 +1,49 @@
+<div
+  class="h-full p-4 text-purple-ultralight group w-24 hover:w-72 overflow-hidden bg-blue-ultradark transition-all duration-150"
+>
+  <div class="w-full h-24 flex justify-around">
+    <span class="mdi mdi-chevron-right group-hover:hidden text-2xl"></span>
+    <span
+      class="hidden text-3xl text-blue-ultralight group-hover:block font-thin tracking-wider"
+      >WorldStats</span
+    >
+  </div>
+  <div class="h-12">
+    <span class="hidden group-hover:block pl-4 text-blue-light text-lg"
+      >All</span
+    >
+  </div>
+  <div
+    class="hover:bg-blue-light m-4 rounded justify-start align-center text-2xl"
+    [ngClass]="{
+      'text-purple-light': statsService.regionSelected === 'All'
+    }"
+  >
+    <button class="flex flex-row" (click)="setOption(allCountries)">
+      <span class="h-full mdi mdi-web"></span>
+      <button class="pl-2 hidden group-hover:block text-xl">
+        {{ allCountries }}
+      </button>
+    </button>
+  </div>
+  <div class="h-12 mt-6">
+    <span class="hidden group-hover:block pl-4 text-blue-light text-lg"
+      >Regions</span
+    >
+  </div>
+  <div
+    class="hover:bg-blue-light m-4 rounded text-2xl"
+    [ngClass]="{
+      'text-purple-light': statsService.regionSelected === item
+    }"
+    *ngFor="let item of menuItems"
+    (click)="setOption(item)"
+  >
+    <button class="flex flex-row">
+      <span class="h-full mdi mdi-map-marker"></span>
+      <span class="pl-2 hidden group-hover:block text-xl">
+        {{ item }}
+      </span>
+    </button>
+  </div>
+</div>

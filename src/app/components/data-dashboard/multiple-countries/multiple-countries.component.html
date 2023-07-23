@@ -1,0 +1,89 @@
+<div class="w-full h-full">
+  <div
+    class="w-full grid grid-cols-2 gap-12 p-12"
+    *ngIf="statsService.loading === false; else loadingPage"
+  >
+    <div
+      *ngIf="statsService.regionSelected == 'All'"
+      class="w-full flex flex-col justify-between items-center p-8 rounded shadow-sm hover:shadow-md bg-white"
+    >
+      <p class="w-full text-blue-regular font-extrabold text-2xl">
+        Countries by Continent ({{ statsService.allCountriesInfo.length }})
+      </p>
+      <div class="w-full">
+        <app-continent-distribution-chart
+          *ngIf="statsService.continentStatistics.length > 0"
+        ></app-continent-distribution-chart>
+      </div>
+    </div>
+    <div
+      class="w-full flex flex-col justify-between items-center p-8 rounded shadow-sm hover:shadow-md bg-white"
+    >
+      <p class="text-pink-dark w-full font-extrabold text-2xl">
+        Languages spoken in most countries
+      </p>
+
+      <div class="w-2/3">
+        <app-language-chart
+          *ngIf="statsService.languagesStatistics.length > 0"
+        ></app-language-chart>
+      </div>
+    </div>
+
+    <div
+      class="w-full flex flex-col justify-between items-center p-8 rounded shadow-sm hover:shadow-md bg-white"
+      *ngIf="statsService.regionSelected == 'All'"
+    >
+      <p class="text-green-dark w-full font-extrabold text-2xl">
+        Independency status
+      </p>
+      <div class="w-2/3">
+        <app-independency-status-chart
+          *ngIf="statsService.dependencyStatistics.length > 0"
+        ></app-independency-status-chart>
+      </div>
+    </div>
+
+    <div
+      class="w-full flex flex-col justify-between items-center p-8 rounded shadow-sm hover:shadow-md bg-white"
+    >
+      <p class="text-purple-regular w-full font-extrabold text-2xl">
+        Largests populations
+      </p>
+      <div class="w-full">
+        <app-population-chart
+          *ngIf="statsService.populationStatistics.length > 0"
+        ></app-population-chart>
+      </div>
+    </div>
+    <div
+      *ngIf="statsService.regionSelected != 'All'"
+      class="w-full flex flex-col justify-between items-center p-8 rounded shadow-sm hover:shadow-md bg-white"
+    >
+      <p class="w-full text-blue-regular font-extrabold text-2xl">
+        Countries that share most borders
+      </p>
+      <div class="w-full">
+        <app-borders-chart
+          *ngIf="statsService.bordersStatistics.length > 0"
+        ></app-borders-chart>
+      </div>
+    </div>
+    <div
+      *ngIf="statsService.regionSelected != 'All'"
+      class="w-full flex flex-col justify-between items-center p-8 rounded shadow-sm hover:shadow-md bg-white"
+    >
+      <p class="w-full text-green-dark font-extrabold text-2xl">
+        Largest countries
+      </p>
+      <div class="w-full">
+        <app-largest-chart
+          *ngIf="statsService.bordersStatistics.length > 0"
+        ></app-largest-chart>
+      </div>
+    </div>
+  </div>
+  <ng-template #loadingPage>
+    <app-loading></app-loading>
+  </ng-template>
+</div>
