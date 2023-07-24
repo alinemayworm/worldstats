@@ -31,8 +31,23 @@ Please run the application on branch main so you can see the all the features im
 ```bash
 npm run start
 ```
-
 In the browser, go to http://localhost:4200/ (if this port was in use when you run the application, go to the port indicated in the terminal where the app is being served)
+
+## Features
+
+Once you open the application, you will see our Welcome Screen. Click on Start to open the Statistics dashboard.
+
+-In the dashboard, the navigation bar will display your options: you can choose to see the Statistics of All countries (world), of a continent or Search for a country.
+By default, app will display All countries. Navigation bar is also collapsable (chevron icon on top will expand / collapse the navigation bar)
+
+-Clicking in options All or a Continent, you will see the statistics of the world of the continent selected.
+
+-Clicking in search, you will see a list where you can search for the country you want.
+  If you don't search for any country, the list will display all countries
+  If you search, the list will refresh to display the countries whose name matches the search input.
+
+-Clicking on a card country, you will see the selected country information.
+
 
 ## Testing the application
 
@@ -70,6 +85,8 @@ Besides Angular 16 + typescript, the other tech / libraries used are:
 
 This application was developed in very short time.
 So, some things were left to a second plan. But here are some things I'd like to improve / add soon:
+
+-Add more statistics and country information
 
 -Remove google maps and add open library map instead
 
