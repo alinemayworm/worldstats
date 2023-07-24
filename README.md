@@ -39,7 +39,7 @@ npm run test
 
 ## Checking the coverage
 
-To run the tests with code coverage, inside /worldstats folder, ng test --code-coverage . A folder coverage/ will be created in the root of the project. Open the file coverage/worldstats-app/index.html in your browser and check the coverage of the unit tests. Spoilers: is 100% :)
+To run the tests with code coverage, inside /worldstats folder, ng test --code-coverage . A folder coverage/ will be created in the root of the project. Open the file coverage/worldstats-app/index.html in your browser and check the coverage of the unit tests.
 
 ```bash
 npm run test --code-coverage
