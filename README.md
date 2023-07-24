@@ -17,7 +17,7 @@ cd worldstats
 
 ## Installation
 
-Install the dependencies running npm install command
+Install the dependencies running npm install command - make sure to be on branch main when doing this.
 
 ```bash
 npm install
@@ -26,6 +26,7 @@ npm install
 ## Running the application
 
 After installing the dependencies, run the application using the command npm run start or ng serve in the root of the project
+Please run the application on branch main so you can see the all the features implemented so far.
 
 ```bash
 npm run start
