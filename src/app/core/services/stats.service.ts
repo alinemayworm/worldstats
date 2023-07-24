@@ -1,5 +1,6 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { Observable, Observer } from "rxjs";
 import { REGION_OPTIONS } from "src/app/shared/app.constants";
 import { ICountry, ICountryListItem } from "src/app/shared/interfaces/country";
@@ -15,7 +16,7 @@ import {
 
 @Injectable()
 export class StatsService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   private baseUrl = "https://restcountries.com/v3.1";
   public menuOptionSelected: string = REGION_OPTIONS[0];
@@ -33,9 +34,8 @@ export class StatsService {
   public getAllCountriesInformation(): void {
     this.loading = true;
 
-    this.http
-      .get(`${this.baseUrl}/all`)
-      .subscribe((results: Partial<Observer<ICountry[]>>) => {
+    this.http.get(`${this.baseUrl}/all`).subscribe(
+      (results: Partial<Observer<ICountry[]>>) => {
         if (this.menuOptionSelected !== "All") {
           this.allCountriesInfo = (results as ICountry[]).filter(
             (country: ICountry) =>
@@ -52,7 +52,15 @@ export class StatsService {
         this.getWorldLanguagesStatistics();
         this.getWorldLargestPopulations();
         this.loading = false;
-      });
+      },
+      (error: HttpErrorResponse) => {
+        console.error(error.statusText);
+        this.router.navigate(["error"], {
+          state: { message: error.statusText },
+        });
+        this.loading = false;
+      }
+    );
   }
 
   private getWorldLanguagesStatistics(): void {
@@ -166,9 +174,8 @@ export class StatsService {
   }
 
   public getCountryList(): void {
-    this.http
-      .get(`${this.baseUrl}/all`)
-      .subscribe((results: Partial<Observer<ICountry[]>>) => {
+    this.http.get(`${this.baseUrl}/all`).subscribe(
+      (results: Partial<Observer<ICountry[]>>) => {
         this.countryList = (results as ICountry[])
           .map((country: ICountry) => {
             return {
@@ -189,7 +196,14 @@ export class StatsService {
             }
             return 0;
           });
-      });
+      },
+      (error: HttpErrorResponse) => {
+        console.error(error.statusText);
+        this.router.navigate(["error"], {
+          state: { message: error.statusText },
+        });
+      }
+    );
   }
 
   public getCountryDetails(code: string): Observable<any> {

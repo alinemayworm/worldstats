@@ -1,5 +1,5 @@
 import { fakeAsync, tick } from "@angular/core/testing";
-import { of } from "rxjs";
+import { of, throwError } from "rxjs";
 import { REGION_OPTIONS } from "src/app/shared/app.constants";
 import { StatsService } from "./stats.service";
 
@@ -9,8 +9,13 @@ describe("HttpService", () => {
   let mockHttp = {
     get: () => of(),
   };
+
+  let mockRouter = {
+    navigate: (_: any) => null,
+  };
+
   beforeEach(() => {
-    service = new StatsService(mockHttp as any);
+    service = new StatsService(mockHttp as any, mockRouter as any);
   });
 
   it("should create", () => {
