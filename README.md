@@ -21,7 +21,7 @@ npm install
 
 ## Running the application
 
-After installing the dependencies, run the application using the command npm run start or ng serve
+After installing the dependencies, run the application using the command npm run start or ng serve in the root of the project
 
 ```bash
 npm run start
@@ -31,7 +31,7 @@ In the browser, go to http://localhost:4200/ (if this port was in use when you r
 
 ## Testing the application
 
-To run the tests, inside /worldstats folder, run npm run test or ng test
+To run the tests, run npm run test or ng test in the root of the project
 
 ```bash
 npm run test
