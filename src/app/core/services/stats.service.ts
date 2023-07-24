@@ -73,7 +73,7 @@ export class StatsService {
 
     const allLanguages: Set<string> = new Set(languages);
 
-    const languagesStatistics: ILanguageStatistics[] = [];
+    let languagesStatistics: ILanguageStatistics[] = [];
 
     allLanguages.forEach((language: string) => {
       languagesStatistics.push({
@@ -84,12 +84,12 @@ export class StatsService {
       });
     });
 
-    this.languagesStatistics = languagesStatistics
-      .sort(
-        (a: ILanguageStatistics, b: ILanguageStatistics) =>
-          b.quantity - a.quantity
-      )
-      .slice(0, 8);
+    languagesStatistics = languagesStatistics.sort(
+      (a: ILanguageStatistics, b: ILanguageStatistics) =>
+        b.quantity - a.quantity
+    );
+
+    this.languagesStatistics = languagesStatistics.slice(0, 8);
   }
 
   private getWorldLargestPopulations(): void {

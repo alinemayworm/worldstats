@@ -1,9 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  DomSanitizer,
-  SafeResourceUrl,
-  SafeUrl,
-} from "@angular/platform-browser";
+import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { Observer } from "rxjs";
 import { StatsService } from "src/app/core/services/stats.service";

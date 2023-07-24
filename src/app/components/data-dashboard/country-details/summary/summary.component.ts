@@ -21,7 +21,10 @@ export class SummaryComponent {
   }
 
   public getCurrency(): string {
-    if (this.countryDetails.currencies) {
+    if (
+      this.countryDetails.currencies &&
+      Object.keys(this.countryDetails.currencies).length > 0
+    ) {
       const code = Object.keys(this.countryDetails.currencies)[0];
       return code + " - " + (this.countryDetails.currencies as any)[code].name;
     }
