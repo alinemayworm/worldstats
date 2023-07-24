@@ -1,4 +1,4 @@
-import { of } from "rxjs";
+import { of, throwError } from "rxjs";
 import { HttpService } from "./http.service";
 
 describe("HttpService", () => {
@@ -26,5 +26,15 @@ describe("HttpService", () => {
       expect(spyGet).toHaveBeenCalledWith("");
       expect(res.response).toEqual("get works!");
     });
+  });
+
+  it("should perform handleError", () => {
+    try {
+      service["handleError"]();
+    } catch (error) {
+      expect(error).toEqual(
+        new Error("Something bad happened; please try again later.")
+      );
+    }
   });
 });

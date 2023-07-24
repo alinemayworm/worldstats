@@ -1,6 +1,10 @@
 # WorldStats
 
-WorldStats is a SPA in Angular 16 + Typescript
+WorldStats is a Angular SPA example in Angular 16 + Typescript
+
+## Requirements
+
+Node.js version -> ^16.14.0 || ^18.10.0 -> You can install node following instructions in https://nodejs.org/en/download
 
 ## Get Started
 
@@ -63,13 +67,15 @@ Besides Angular 16 + typescript, the other tech / libraries used are:
 
 ## Extras and improvements I'd like to add
 
-This application was developed in very short time in order to be presented to you :)
+This application was developed in very short time.
 So, some things were left to a second plan. But here are some things I'd like to improve / add soon:
-
--Error page and error handling, as life is not only happy paths.
 
 -Remove google maps and add open library map instead
 
 -Some extra animations to make the transitions smoother
+
+-Improve design, routing, loading and error handling
+
+-Create a chart factory in order to reuse code
 
 -Create a node server to stop relying on Rest Countries API and have my own API, so it is possible not only see readonly data, but also create new imaginary countries :)
