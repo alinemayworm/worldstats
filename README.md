@@ -43,7 +43,7 @@ By default, app will display All countries. Navigation bar is also collapsable (
 -Clicking in options All or a Continent, you will see the statistics of the world of the continent selected.
 
 -Clicking in search, you will see a list where you can search for the country you want.
-  If you don't search for any country, the list will display all countries
+  If you don't search for any country, the list will display all countries.
   If you search, the list will refresh to display the countries whose name matches the search input.
 
 -Clicking on a card country, you will see the selected country information.
