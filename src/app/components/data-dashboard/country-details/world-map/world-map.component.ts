@@ -45,7 +45,7 @@ export class WorldMapComponent implements AfterViewInit {
     this.marker = new google.maps.Marker({
       position: markerPosition,
       map: this.map,
-      title: "Your Marker Title",
+      title: "Country selected",
     });
   }
 }

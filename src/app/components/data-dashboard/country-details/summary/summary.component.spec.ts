@@ -1,21 +1,51 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SummaryComponent } from "./summary.component";
 
-import { SummaryComponent } from './summary.component';
-
-describe('SummaryComponent', () => {
+describe("SummaryComponent", () => {
   let component: SummaryComponent;
-  let fixture: ComponentFixture<SummaryComponent>;
+
+  const mockCountryDetails = {
+    population: 1,
+    area: 1,
+    currencies: {
+      USD: { name: "US Dollar" },
+    },
+  };
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [SummaryComponent]
-    });
-    fixture = TestBed.createComponent(SummaryComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new SummaryComponent();
+    component.countryDetails = mockCountryDetails as any;
+
+    // Provide a mock countryDetails object with the currencies property defined
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
+  });
+
+  it("should perform getDensity", () => {
+    (component.countryDetails as any) = {
+      population: 50,
+      area: 6,
+    };
+    const response = component.getDensity();
+    expect(response).toEqual(8);
+  });
+
+  it("should perform getCurrency", () => {
+    (component.countryDetails as any) = {
+      currencies: {
+        USD: { name: "US Dollars" },
+      },
+    };
+    const response = component.getCurrency();
+    expect(response).toEqual("USD - US Dollars");
+  });
+
+  it("should perform getCurrency", () => {
+    (component.countryDetails as any) = {
+      currencies: null,
+    };
+    const response = component.getCurrency();
+    expect(response).toEqual("N/A");
   });
 });
